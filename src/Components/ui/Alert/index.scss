@@ -1,0 +1,70 @@
+// Default
+$defaultBorder : #c8c8c8;
+$defaultBg : rgb(29 31 32 / 71%);
+$defaultColor : #c8c8c8;
+
+// Info 
+$infoBorder : #646cff;
+$infoBg : rgb(100 108 255 / 8%);
+$infoColor : #bcc0ff;
+
+// Warning
+$warningBorder : rgb(255,213,0,0.793);
+$warningBg : rgb(255 197 23 / 5%);
+$warningColor : #fcd253; 
+
+// Error
+$errorBorder : rgba(255,25,0,0.322);
+$errorBg : rgba(192 29 29 / 15%);
+$errorColor : #ef8d8dfa;
+
+// Success
+$successBorder : rgba(0, 255, 0, 0.322);
+$successBg : rgba(246, 238 ,9 , 0.127);
+$successColor : #7acf58d6;
+
+@mixin alert ($name, $borderColor,$bgColor,$color){
+    .#{$name} {
+        border:  2px dotted $borderColor;
+        border-radius: 0.8rem;
+        padding: 1.3rem;
+        background-color: $bgColor;
+        color: $color;
+        margin-bottom: 1.5rem;
+        .alert-header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .title{
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                h4{
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    font-family: 'Courier New', Courier, monospace;
+                    text-transform: capitalize;
+                }
+            }
+            .close{
+                cursor: pointer;
+            }
+        }
+        p{
+            margin-top: 1.2rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            line-height: 1.5rem;
+        }
+        a{
+            color: #9499ff;
+            font-weight: 600
+        }
+    }
+}
+
+@include alert("alert-default", $defaultBorder, $defaultBg,$defaultColor);
+@include alert("alert-error", $errorBorder, $errorBg,$errorColor);
+@include alert("alert-info", $infoBorder, $infoBg,$infoColor);
+@include alert("alert-success", $successBorder, $successBg,$successColor);
+@include alert("alert-warning", $warningBorder, $warningBg,$warningColor);
